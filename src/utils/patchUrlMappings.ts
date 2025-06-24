@@ -174,6 +174,7 @@ function attemptRecreateScriptNode(node: HTMLElement, {url, mappings}: RemapInpu
 
 export function attemptRemap({url, mappings}: RemapInput): URL {
   const newURL = new URL(url.toString());
+  newURL.port = '';
   if (
     (newURL.hostname.includes('discordsays.com') || newURL.hostname.includes('discordsez.com')) &&
     // Only apply proxy prefix once
