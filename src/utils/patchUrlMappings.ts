@@ -66,8 +66,19 @@ export function patchUrlMappings(
   if (patchWebSocket) {
     class WebSocketProxy extends WebSocket {
       constructor(url: string | URL, protocols?: string | string[]) {
-        const remapped = attemptRemap({url: url instanceof URL ? url : absoluteURL(url), mappings});
-        super(remapped.toString(), protocols);
+        const initialUrl = url instanceof URL ? url : absoluteURL(url);
+        console.log(`DEBUG 1: Initial URL passed to WebSocketProxy`, {
+          href: initialUrl.href,
+          port: initialUrl.port,
+        });
+        const remapped = attemptRemap({url: initialUrl, mappings});
+
+        console.log(`DEBUG 2: FINAL remapped URL before super()`, {
+          href: remapped.href,
+          port: remapped.port,
+          object: remapped
+        });
+        super(remapped, protocols);
       }
     }
     window.WebSocket = WebSocketProxy;
