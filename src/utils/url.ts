@@ -34,7 +34,7 @@ export interface MatchAndRewriteURLInputs {
 export function matchAndRewriteURL({originalURL, prefix, prefixHost, target}: MatchAndRewriteURLInputs): URL | null {
   
   console.log(`DEBUG 3: Inside matchAndRewriteURL`, {
-    originalURL: originalURL,
+    originalURL: originalURL.toString(),
     prefix: prefix,
     prefixHost: prefixHost,
     target: target,
