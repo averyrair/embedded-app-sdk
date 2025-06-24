@@ -32,6 +32,14 @@ export interface MatchAndRewriteURLInputs {
  * @returns  null if URL doesn't match prefix, otherwise return rewritten URL
  */
 export function matchAndRewriteURL({originalURL, prefix, prefixHost, target}: MatchAndRewriteURLInputs): URL | null {
+  
+  console.log(`DEBUG 3: Inside matchAndRewriteURL`, {
+    originalURL: originalURL,
+    prefix: prefix,
+    prefixHost: prefixHost,
+    target: target,
+  });
+
   // coerce url with filler https protocol so we can retrieve host and pathname from target
   const targetURL = new URL(`https://${target}`);
   // Depending on the environment, the URL constructor may turn `{` and `}` into `%7B` and `%7D`, respectively
