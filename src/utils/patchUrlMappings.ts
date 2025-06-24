@@ -175,7 +175,7 @@ export function attemptRemap({url, mappings}: RemapInput): URL {
       originalURL: newURL,
       prefix: mapping.prefix,
       target: mapping.target,
-      prefixHost: window.location.host,
+      prefixHost: window.location.hostname,
     });
     if (mapped != null && mapped?.toString() !== url.toString()) {
       return mapped;
